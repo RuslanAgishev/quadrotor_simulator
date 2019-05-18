@@ -1,1 +1,1 @@
-# coursera_drones
+# Quadrotor simulator
