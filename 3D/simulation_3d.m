@@ -44,6 +44,9 @@ view(3);
 xlabel('x [m]'); ylabel('y [m]'); zlabel('z [m]')
 quadcolors = lines(1);
 
+pc = pcread('../data/fountain.ply');
+pcshow(pc);
+
 set(gcf,'Renderer','OpenGL')
 
 

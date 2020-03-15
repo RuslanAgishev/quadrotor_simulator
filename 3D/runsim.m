@@ -5,11 +5,11 @@ clear;
 addpath('utils');
 
 params = sys_params();
-maxtime = 10; % maximum time of the simulation
+maxtime = 200; % maximum time of the simulation
 pos_tol = 0.1; % [m]
 vel_tol = 0.1; % [m/s]
 
-sample = true;
+sample = false;
 if sample
     % PRE-CALCULATED TRAJECTORIES
     % trajhandle = @traj_line;
@@ -18,28 +18,14 @@ if sample
 else
     % TRAJECTORY GENERATION WITH WAYPOINTS
     trajhandle = @traj_generator;
-    velocity = 1.0; % desired mean velocity
-    random = false;
-    
-    if random
-        N = 4;  % whole number of random waypoints
-        d = 3;  % maximum value of each coordinate (x,y,z)
-        waypoints = [zeros(3,1) randi(d,3,N)];
-    else
-        form = 'maneuvre';
-        %waypoints = getwp(form, 4, pi/13);
-        % waypoints = getwp(form);
+    velocity = 1.0; % desired mean velocity    
         
-        waypoints = [0    0   0;
-                     1    1   1;
-                     2    0   2;
-                     3    -1  1;
-                     4    0   0]';
+    % sprral waypoints
+    waypoints =getwp('helix');
 
-        N = length(waypoints)-1;
-    end
-    % [mode, minangle] = traj_type(waypoints);
-    mode = 'snap';
+    N = length(waypoints)-1;
+    
+    mode = 'jerk';
     trajhandle([], [], mode, velocity, waypoints);
     disp(['Trajectory type: ', mode]);
 end
@@ -60,11 +46,11 @@ else
     [ err ] = trajerr(state, des_state,t);
 end
 
-disp(['Trajectory error: ', num2str(err), ' [m]']);
-L = length_traj(state(:,1:3));
-Vmean = mean_velocity(state(:,4:6));
-disp(['Trajectory length: ', num2str(L), ' [m]']);
-disp(['Mean velocity: ', num2str(Vmean), ' [m/s]']);
-
-E = enconsum(t, state, trajhandle, controlhandle, params);
-disp(['Energy consumption: ', num2str(E), ' [J]']);
+% disp(['Trajectory error: ', num2str(err), ' [m]']);
+% L = length_traj(state(:,1:3));
+% Vmean = mean_velocity(state(:,4:6));
+% disp(['Trajectory length: ', num2str(L), ' [m]']);
+% disp(['Mean velocity: ', num2str(Vmean), ' [m/s]']);
+% 
+% E = enconsum(t, state, trajhandle, controlhandle, params);
+% disp(['Energy consumption: ', num2str(E), ' [J]']);

@@ -3,8 +3,8 @@ function [desired_state] = traj_helix(t, state, r, z_max)
 %   point (0; 0; 0) starting at the point (r; 0; 0).
 %   The z coordinate should start at 0 and end at z_max.
 
-if nargin < 4, z_max = 2.5; end
-if nargin < 3, r = 5; end
+if nargin < 4, z_max = 5.0; end
+if nargin < 3, r = 10; end
 T       = 12;       % finishing time 10
 
 if t >= T

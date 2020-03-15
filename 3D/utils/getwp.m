@@ -7,9 +7,10 @@ if strcmp(form, 'angle') && (nargin == 1)
         % 0    2   2;
         0    0   1.1]';
 elseif strcmp(form, 'helix') && (nargin == 1)
-    t = pi*(0:0.1:2.5);
-    x = 5*cos(t);
-    y = 5*sin(t);
+    r = 5; h_max = 16.5;
+    t = pi*(0:0.4:h_max);
+    x = r*cos(t);
+    y = r*sin(t);
     z = t/pi;
     w = [x; y; z];
 elseif strcmp(form, 'maneuvre') && (nargin > 1)
