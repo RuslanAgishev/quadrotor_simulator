@@ -9,7 +9,7 @@ maxtime = 10; % maximum time of the simulation
 pos_tol = 0.1; % [m]
 vel_tol = 0.1; % [m/s]
 
-sample = false;
+sample = true;
 if sample
     % PRE-CALCULATED TRAJECTORIES
     % trajhandle = @traj_line;
@@ -41,6 +41,7 @@ else
     % [mode, minangle] = traj_type(waypoints);
     mode = 'snap';
     trajhandle([], [], mode, velocity, waypoints);
+    disp(['Trajectory type: ', mode]);
 end
 
 % CONTROLLER
@@ -49,8 +50,6 @@ controlhandle = @controller;
 % Run simulation with given trajectory generator and controller
 % s - n x 13 state, with each row having format
 % [x, y, z, xdot, ydot, zdot, qw, qx, qy, qz, p, q, r]
-
-disp(['Trajectory type: ', mode]);
 
 if isequal(trajhandle, @traj_generator)
     [t, state, des_state] = simulation_3d(trajhandle, controlhandle, maxtime, pos_tol, vel_tol, waypoints);
