@@ -3,9 +3,12 @@ clear;
 
 
 addpath('utils');
+% initialize ROS master
+rosshutdown
+rosinit
 
 params = sys_params();
-maxtime = 200; % maximum time of the simulation
+maxtime = 500; % maximum time of the simulation
 pos_tol = 0.1; % [m]
 vel_tol = 0.1; % [m/s]
 
@@ -22,6 +25,11 @@ else
         
     % sprral waypoints
     waypoints =getwp('helix');
+%     waypoints = [0    0   0;
+%                      1    1   1;
+%                      2    0   2;
+%                      3    -1  1;
+%                      4    0   0]';
 
     N = length(waypoints)-1;
     
@@ -46,11 +54,3 @@ else
     [ err ] = trajerr(state, des_state,t);
 end
 
-% disp(['Trajectory error: ', num2str(err), ' [m]']);
-% L = length_traj(state(:,1:3));
-% Vmean = mean_velocity(state(:,4:6));
-% disp(['Trajectory length: ', num2str(L), ' [m]']);
-% disp(['Mean velocity: ', num2str(Vmean), ' [m/s]']);
-% 
-% E = enconsum(t, state, trajhandle, controlhandle, params);
-% disp(['Energy consumption: ', num2str(E), ' [J]']);

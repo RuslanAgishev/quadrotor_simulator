@@ -75,6 +75,13 @@ xtraj = zeros(max_iter*nstep, length(x0));
 ttraj = zeros(max_iter*nstep, 1);
 
 x       = x0;        % state
+odom_msg = state_to_odom(x); % odometry ROS msg to publish
+odom_pub = rospublisher('/odom', 'nav_msgs/Odometry');
+
+array_msg = rosmessage('std_msgs/Float32MultiArray');
+commands_pub = rospublisher('/commands_array', 'std_msgs/Float32MultiArray');
+% traj_msg = rosmessage('nav_msgs/Path');
+% traj_pub = rospublisher('/trajectory', 'nav_msgs/Path');
 
 %% ************************* RUN SIMULATION *************************
 disp('Simulation Running....');
@@ -95,8 +102,20 @@ for iter = 1:max_iter
     end
     
     % Run simulation
+    [F,M] = controller(iter, current_state, desired_state, params);
+    % Send control commands as ROS msg
+    array_msg.Data = [M(1), M(2), M(3), F];
+    send(commands_pub, array_msg);
+    
+    
     [tsave, xsave] = ode45(@(t,s) quadEOM(t, s, controlhandle, trajhandle, params), timeint, x);
     x    = xsave(end, :)';
+    % Publish drone state as Odometry msg
+    odom_msg = state_to_odom(x);
+    send(odom_pub, odom_msg);
+    % traj_msg.Header = odom_msg.Header;
+    % append(traj_msg.Poses.Pose, odom_msg.Pose)
+    % send(traj_pub, traj_msg);
     
     % Save to traj
     xtraj((iter-1)*nstep+1:iter*nstep,:) = xsave(1:end-1,:);
