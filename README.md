@@ -46,3 +46,10 @@ roslaunch quadrotor_sim quadrotor_sim.launch
 
 As an output you should see in Rviz:
 <img src="https://github.com/RuslanAgishev/quadrotor_simulator/blob/ltu/figures/spiral_rviz.png" />
+
+## Implementation details
+Minimum jerk and minimum snap trajectories generation implementation is available [here](https://github.com/RuslanAgishev/quadrotor_simulator/blob/ltu/3D/traj_generator.m).
+Reference: [Daniel Mellinger and Vijay Kumar, 2011](http://www-personal.acfr.usyd.edu.au/spns/cdm/papers/Mellinger.pdf).
+
+Quadrotor controller is implemented [here](https://github.com/RuslanAgishev/quadrotor_simulator/blob/ltu/3D/controller.m).
+Reference: [Coursera lecture from Prof. Vijay Kumar](https://ru.coursera.org/lecture/robotics-flight/3-d-quadrotor-control-zpCD1).
