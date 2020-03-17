@@ -46,6 +46,8 @@ roslaunch quadrotor_sim quadrotor_sim.launch
 
 As an output you should see in Rviz:
 <img src="https://github.com/RuslanAgishev/quadrotor_simulator/blob/ltu/figures/spiral_rviz.png" />
+Trajecoty publisher [node](https://github.com/RuslanAgishev/quadrotor_simulator/blob/ltu/ros_ws/src/quadrotor_sim/src/traj_publisher.py)
+provides quadrotor path (```nav_msgs/Path``` message) from a sequence of odometry messages.
 
 ## Implementation details
 Minimum jerk and minimum snap trajectories generation implementation is available [here](https://github.com/RuslanAgishev/quadrotor_simulator/blob/ltu/3D/traj_generator.m).
