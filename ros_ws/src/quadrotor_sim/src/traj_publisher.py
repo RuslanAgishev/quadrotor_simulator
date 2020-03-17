@@ -16,6 +16,7 @@ def odom_cb(data):
     path.poses.append(pose)
     path_pub.publish(path)
 
+
 rospy.init_node('path_node')
 
 odom_sub = rospy.Subscriber('/odom', Odometry, odom_cb)

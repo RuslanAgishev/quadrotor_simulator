@@ -4,3 +4,6 @@
 __pycache__
 build
 devel
+
+# large files
+*.bag
