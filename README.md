@@ -1,6 +1,6 @@
 # Quadrotor simulator
-[![Thesis](http://img.shields.io/badge/Bc-Thesis-blue.svg?style=plastic)](https://github.com/RuslanAgishev/quadrotor_simulation/blob/master/bachelor_thesis.pdf)
-[![EnT-MIPT](http://img.shields.io/badge/IEEE-EnT2019-blue.svg?style=plastic)](https://ieeexplore.ieee.org/document/8757477)
+[![Thesis](http://img.shields.io/badge/Bc-Thesis-blue.svg?style=plastic)](https://docs.google.com/document/d/0B2QZ6HYjbxE4TFhsT0JuLTljWHM/edit?usp=sharing&ouid=106278185530953973703&resourcekey=0-i9YpuCWKhYQJrumkIpNX6Q&rtpof=true&sd=true)
+[![EnT-MIPT](http://img.shields.io/badge/IEEE-EnT2018-blue.svg?style=plastic)](https://ieeexplore.ieee.org/document/8757477)
 
 ## Package description
 
