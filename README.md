@@ -1,4 +1,6 @@
 # Quadrotor simulator
+[![Thesis](http://img.shields.io/badge/Bc-Thesis-blue.svg?style=plastic)](https://github.com/RuslanAgishev/quadrotor_simulation/blob/master/bachelor_thesis.pdf)
+[![EnT-MIPT](http://img.shields.io/badge/IEEE-EnT2019-blue.svg?style=plastic)](https://ieeexplore.ieee.org/document/8757477)
 
 ## Package description
 
@@ -55,3 +57,21 @@ Reference: [Daniel Mellinger and Vijay Kumar, 2011](http://www-personal.acfr.usy
 
 Quadrotor controller is implemented [here](https://github.com/RuslanAgishev/quadrotor_simulator/blob/ltu/3D/controller.m).
 Reference: [Coursera lecture from Prof. Vijay Kumar](https://ru.coursera.org/lecture/robotics-flight/3-d-quadrotor-control-zpCD1).
+
+Refer to my [Bachelor Thesis](bachelor_thesis.pdf) for more details (in Russian).
+
+## Citation
+The package was used in the publication. Feel free to cite it if you find it relevant to your recearch.
+
+```bibtex
+@INPROCEEDINGS{8757477,
+  author={Kalinov, Ivan and Agishev, Ruslan},
+  booktitle={2018 Engineering and Telecommunication (EnT-MIPT)}, 
+  title={Effective Detection of Real Trajectories of Highly Maneuverable UAVs Under Strong Noise Conditions}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={193-196},
+  keywords={Kalman filters;Trajectory;Filtration;Radar tracking;Filtering algorithms;Tracking;Drones;UAV;DSP;Kalman filter;trajectory analysis},
+  doi={10.1109/EnT-MIPT.2018.00050}}
+```
